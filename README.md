@@ -25,3 +25,27 @@
 
 ![image](https://user-images.githubusercontent.com/72570095/189487650-0c25dca3-ea15-448f-b618-be81471ff823.png)
 
+## Chapter 2 Day 2
+
+1. A script cannot changes data, so we call "changeGreeting" function in a transaction (transaction is changes the data).
+2. The "AuthAccount" type is used to access the data in your account.
+3. The "prepare" phase is used to access the information/data in your account. The "Execute" phase can't do that, but it can call functions and do stuff to change the data on the blockchain.
+4.
+
+Contract
+
+![image](https://user-images.githubusercontent.com/72570095/189492131-06a25a9b-6daf-4507-b140-e643ea296567.png)
+
+Script
+
+![image](https://user-images.githubusercontent.com/72570095/189492241-38d75517-a12b-4933-af49-74a85d834989.png)
+
+Transaction
+
+![image](https://user-images.githubusercontent.com/72570095/189492592-8b4df99a-6a10-4024-b895-68c6a8e7391e.png)
+
+Result
+
+![image](https://user-images.githubusercontent.com/72570095/189492626-6113f299-a6de-45bb-ae89-25135bc12a71.png)
+
+
