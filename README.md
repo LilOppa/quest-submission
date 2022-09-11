@@ -63,7 +63,7 @@ if value not nil, its fine and we get rid of the optional type
 if value is nil, PANIC!
 
 ```
-pub fun main(){
+pub fun main() {
   var number1: Int? = 7
   var unwrappedNumber1: Int = number1! // Notice it removes the optional type
 
@@ -71,3 +71,11 @@ pub fun main(){
   var unwrappedNumber2: Int = number2! // PANICS! The entire program will abort because it found a problem. It tried to unwrap a nil, which isn't allowed 
 }
 ```
+4. 
+
+- The error message means the function expects return is ```String ``` type, but return is ``String?```
+- When you access elements of a dictionary, it returns the value as an optional
+- ```string``` => ```string?```
+  ```return thing[0x03]``` => ```return thing[0x03]!```
+  
+ 
