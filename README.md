@@ -73,10 +73,45 @@ pub fun main() {
 ```
 4. 
 
-- The error message means the function expects return is ```String ``` type, but return is ```String?```
+- The error message means the function expects return is ```String``` type, but return is ```String?```
 - When you access elements of a dictionary, it returns the value as an optional
 - ```String``` => ```String?```
 
   ```return thing[0x03]``` => ```return thing[0x03]!```
   
+ ## Chapter 2 Day 4
  
+ 1. Contract
+
+```pub contract Pokedex {
+
+    pub var pokemons: {Address: Pokemon}
+    
+    pub struct Pokemon {
+        pub let name: String
+        pub let type: String
+        pub let total: Int64
+        pub let hp: Int64
+        pub let account: Address
+
+        // You have to pass in 4 arguments when creating this Struct.
+        init(_name: String, _type: String, _total: Int64, _hp: Int64, _account: Address) {
+            self.name = _name
+            self.type = _type
+            self.total = _total
+            self.hp = _hp
+            self.account = _account
+        }
+    }
+
+    pub fun addPokemon(name: String, type: String, total: Int64, hp: Int64, account: Address) {
+        let newPokemon = Pokemon(_name: name, _type: type, _total: total, _hp: hp, _account: account)
+        self.pokemons[account] = newPokemon
+    }
+
+    init() {
+        self.pokemons = {}
+    }
+
+}
+```
