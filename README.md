@@ -60,4 +60,4 @@ Result
 
 3.
 
-the force unwrap operator '''!''' This operator "unwraps" an optional type by saying: "If this thing is nil, PANIC! If it's not nil, we're fine, but get rid of the optional type." Well what the heck does THIS mean!? Let's look:
+the force unwrap operator ```!``` This operator "unwraps" an optional type by saying: "If this thing is nil, PANIC! If it's not nil, we're fine, but get rid of the optional type." Well what the heck does THIS mean!? Let's look:
