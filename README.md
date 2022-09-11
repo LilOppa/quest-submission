@@ -48,4 +48,9 @@ Result
 
 ![image](https://user-images.githubusercontent.com/72570095/189492626-6113f299-a6de-45bb-ae89-25135bc12a71.png)
 
+## Chapter 2 Day 3
+
+1.
+
+![image](https://user-images.githubusercontent.com/72570095/189526376-fd609de0-db5e-458d-9fe8-78c3d4147506.png)
 
