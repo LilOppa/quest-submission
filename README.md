@@ -58,6 +58,14 @@ Result
 
 ![image](https://user-images.githubusercontent.com/72570095/189527003-21bf8dfb-68c3-4209-b8bf-98521de81aa6.png)
 
-3.
+3. The force unwrap operator ```!``` is used to "unswraps" an optional type: 
+if value not nil, its fine and we get rid of the optional type
+if value is nil, PANIC!
 
-the force unwrap operator ```!``` This operator "unwraps" an optional type by saying: "If this thing is nil, PANIC! If it's not nil, we're fine, but get rid of the optional type." Well what the heck does THIS mean!? Let's look:
+```
+var name1: Int? = "Jacob"
+var unwrappedName1: Int = name1! // Notice it removes the optional type
+
+var name2: Int? = nil
+var unwrappedName2: Int = name2! // PANICS! The entire program will abort because it found a problem. It tried to unwrap a nil, which isn't allowed
+```
