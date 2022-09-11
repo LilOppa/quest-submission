@@ -95,7 +95,7 @@ pub fun main() {
         pub let hp: Int64
         pub let account: Address
 
-        // You have to pass in 4 arguments when creating this Struct.
+        // You have to pass in 5 arguments when creating this Struct.
         init(_name: String, _type: String, _total: Int64, _hp: Int64, _account: Address) {
             self.name = _name
             self.type = _type
@@ -114,5 +114,30 @@ pub fun main() {
         self.pokemons = {}
     }
 
+}
+```
+2. Transaction
+```
+
+import Pokedex from 0x01
+
+transaction(name: String, type: String, total: Int64, hp: Int64, account: Address) {
+
+    prepare(signer: AuthAccount) {}
+
+    execute {
+        Pokedex.addPokemon(name: name, type: type, total: total, hp: hp, account: account)
+        log("Pokemon caught!")
+    }
+}
+```
+
+3. Script
+```
+
+import Pokedex from 0x01
+
+pub fun main(account: Address): Pokedex.Pokemon {
+    return Pokedex.pokemons[account]!
 }
 ```
