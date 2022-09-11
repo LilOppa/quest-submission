@@ -73,9 +73,10 @@ pub fun main() {
 ```
 4. 
 
-- The error message means the function expects return is ```String ``` type, but return is ``String?```
+- The error message means the function expects return is ```String ``` type, but return is ```String?```
 - When you access elements of a dictionary, it returns the value as an optional
-- ```string``` => ```string?```
+- ```String``` => ```String?```
+
   ```return thing[0x03]``` => ```return thing[0x03]!```
   
  
