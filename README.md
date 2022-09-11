@@ -59,8 +59,8 @@ Result
 ![image](https://user-images.githubusercontent.com/72570095/189527003-21bf8dfb-68c3-4209-b8bf-98521de81aa6.png)
 
 3. The force unwrap operator ```!``` is used to "unswraps" an optional type: 
-if value not nil, its fine and we get rid of the optional type
-if value is nil, PANIC!
+- if value not nil, its fine and we get rid of the optional type
+- if value is nil, PANIC!
 
 ```
 pub fun main() {
