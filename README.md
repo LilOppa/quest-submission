@@ -83,7 +83,8 @@ pub fun main() {
  
  1. Contract
 
-``` pub contract Pokedex {
+``` 
+    pub contract Pokedex {
 
     pub var pokemons: {Address: Pokemon}
     
