@@ -63,9 +63,11 @@ if value not nil, its fine and we get rid of the optional type
 if value is nil, PANIC!
 
 ```
-var name1: Int? = "Jacob"
-var unwrappedName1: Int = name1! // Notice it removes the optional type
+pub fun main(){
+  var number1: Int? = 7
+  var unwrappedNumber1: Int = number1! // Notice it removes the optional type
 
-var name2: Int? = nil
-var unwrappedName2: Int = name2! // PANICS! The entire program will abort because it found a problem. It tried to unwrap a nil, which isn't allowed
+  var number2: Int? = nil
+  var unwrappedNumber2: Int = number2! // PANICS! The entire program will abort because it found a problem. It tried to unwrap a nil, which isn't allowed 
+}
 ```
