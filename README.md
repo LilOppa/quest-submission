@@ -141,3 +141,19 @@ pub fun main(account: Address): Pokedex.Pokemon {
     return Pokedex.pokemons[account]!
 }
 ```
+
+## Chapter 3 Day 1
+
+1. Structs can be copied, owerwrited and created them you want. You can't do that with Resources.
+2. If we use Struct to transfer a NFT it may be lost(if the developer made a mistake in the code). That's why we need to use Resource!
+3. ```create```
+4. No. We are can create Resource only inside the contract
+5. ```Jacob```
+6. 
+
+```
+pub fun createJacob(): @Jacob {
+  let myJacob <- create Jacob()
+  return <- myJacob
+}
+```
