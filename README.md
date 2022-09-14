@@ -157,3 +157,47 @@ pub fun createJacob(): @Jacob {
   return <- myJacob
 }
 ```
+
+## Chapter 3 Day 2
+
+```
+pub contract BasketballFantasy {
+
+    pub var arrayOfLineUp: @[LineUp]
+    pub var dictionaryOfLineUp: @{UInt: LineUp}
+
+    pub resource LineUp {
+        pub let number: UInt
+        init() {
+            self.number = 23
+        }
+    }
+
+    pub fun addLineUpArray(lineup: @LineUp) {
+        self.arrayOfLineUp.append(<- lineup)
+    }
+
+    pub fun addLineUpDictionary(lineup: @LineUp) {
+        let key = lineup.number
+        
+        let oldLineUp <- self.dictionaryOfLineUp[key] <- lineup
+        destroy oldLineUp
+    }
+
+    pub fun removeLineUpArray(index: Int): @LineUp {
+        return <- self.arrayOfLineUp.remove(at: index)
+    }
+
+    pub fun removeLineUpDictionary(key: UInt): @LineUp {
+        let lineup <- self.dictionaryOfLineUp.remove(key: key)!
+        return <- lineup
+    }
+
+    init() {
+        self.arrayOfLineUp <- []
+        self.dictionaryOfLineUp <- {}
+    }
+
+}
+
+```
