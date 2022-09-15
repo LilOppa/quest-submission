@@ -163,6 +163,7 @@ pub fun createJacob(): @Jacob {
 1.
 
 ```
+
 pub contract BasketballFantasy {
 
     pub var arrayOfLineUp: @[LineUp]
