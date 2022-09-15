@@ -212,25 +212,25 @@ pub contract BasketballFantasy {
 
 pub contract BasketballFantasy {
 
-    pub var dictionaryOfLineup: @{String: Lineup}
+    pub var dictionaryOfLineup: @{UInt: Lineup}
 
     pub resource Lineup {
-        pub let number: UInt
+        pub let name: String
         pub let team: String
-        init(_number: UInt, _team: String) {
-            self.number = _number
+        init(_name: String, _team: String) {
+            self.name = _name
             self.team = _team
         }
     }
 
-    pub fun getReference(key: String): &Lineup {
+    pub fun getReference(key: UInt): &Lineup {
         return (&self.dictionaryOfLineup[key] as &Lineup?)!
     }
 
     init() {
         self.dictionaryOfLineup <- {
-            "LeBron James": <- create Lineup(_number: 23, _team: "Los Angeles Lakers"), 
-            "Kevin Durant": <- create Lineup(_number: 7, _team: "Brooklyn Nets")
+            23: <- create Lineup(_name: "LeBron James", _team: "Los Angeles Lakers"), 
+            7: <- create Lineup(_name: "Kevin Durant", _team: "Brooklyn Nets")
         }
     }
 }
@@ -243,9 +243,11 @@ pub contract BasketballFantasy {
 
 import BasketballFantasy from 0x01
 
-pub fun main(): UInt {
-  let ref = BasketballFantasy.getReference(key: "LeBron James")
-  return ref.number // returns "23"
+pub fun main(): String {
+  let ref = BasketballFantasy.getReference(key: 23)
+  return ref.name // returns "LeBron James"
 }
 
 ```
+
+3. This is very fast and easy when you want to access a resource to view or update its fields.
