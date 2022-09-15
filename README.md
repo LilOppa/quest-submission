@@ -160,8 +160,6 @@ pub fun createJacob(): @Jacob {
 
 ## Chapter 3 Day 2
 
-1.
-
 ```
 
 pub contract BasketballFantasy {
@@ -206,6 +204,9 @@ pub contract BasketballFantasy {
 ```
 
 ## Chapter 3 Day 3
+
+1.
+
 
 ```
 
