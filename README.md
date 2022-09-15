@@ -160,6 +160,7 @@ pub fun createJacob(): @Jacob {
 
 ## Chapter 3 Day 2
 
+1.
 ```
 pub contract BasketballFantasy {
 
@@ -198,6 +199,50 @@ pub contract BasketballFantasy {
         self.dictionaryOfLineUp <- {}
     }
 
+}
+
+```
+
+## Chapter 3 Day 3
+
+```
+
+pub contract BasketballFantasy {
+
+    pub var dictionaryOfLineup: @{String: Lineup}
+
+    pub resource Lineup {
+        pub let number: UInt
+        pub let team: String
+        init(_number: UInt, _team: String) {
+            self.number = _number
+            self.team = _team
+        }
+    }
+
+    pub fun getReference(key: String): &Lineup {
+        return (&self.dictionaryOfLineup[key] as &Lineup?)!
+    }
+
+    init() {
+        self.dictionaryOfLineup <- {
+            "LeBron James": <- create Lineup(_number: 23, _team: "Los Angeles Lakers"), 
+            "Kevin Durant": <- create Lineup(_number: 7, _team: "Brooklyn Nets")
+        }
+    }
+}
+
+```
+
+2.
+
+```
+
+import BasketballFantasy from 0x01
+
+pub fun main(): UInt {
+  let ref = BasketballFantasy.getReference(key: "LeBron James")
+  return ref.number // returns "23"
 }
 
 ```
