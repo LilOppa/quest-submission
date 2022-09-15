@@ -161,6 +161,7 @@ pub fun createJacob(): @Jacob {
 ## Chapter 3 Day 2
 
 1.
+
 ```
 pub contract BasketballFantasy {
 
