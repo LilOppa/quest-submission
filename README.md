@@ -256,7 +256,7 @@ pub fun main(): String {
 
 1. 
 - to expose data from resources and structures to another resources/structs
-- access control: allows you to only expose certain data to certain users
+- access restrictions: allows you to only expose certain data to certain users
 
 2. 
 
