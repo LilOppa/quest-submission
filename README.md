@@ -251,3 +251,79 @@ pub fun main(): String {
 ```
 
 3. This is very fast and easy when you want to access a resource to view or update its fields.
+
+## Chapter 3 Day 4
+
+1. 
+- to expose data from resources and structures to another resources/structs
+- access control: allows you to only expose certain data to certain users
+
+2. 
+
+```
+
+pub contract BasketballFantasy {
+
+    pub resource interface ILineup {
+      pub let player: String
+    }
+
+    pub resource Lineup: ILineup {
+        pub let player: String
+        pub let team: String
+        init() {
+            self.player = "Kevin Durant"
+            self.team = "Brooklyn Nets"
+        }
+    }
+
+    pub fun noInterface() {
+      let lineup: @Lineup <- create Lineup()
+      log(lineup.team) // Brooklyn Nets
+
+      destroy lineup
+    }
+
+    pub fun yesInterface() {
+      let lineup: @Lineup{ILineup} <- create Lineup()
+      log(lineup.team) // ERROR: `member of restricted type is not accessible: team`
+
+      destroy lineup
+    }
+}
+
+```
+
+3.
+
+pub contract Stuff {
+
+    pub struct interface ITest {
+      pub var greeting: String
+      pub var favouriteFruit: String
+      ***pub fun changeGreeting(newGreeting: String): String***
+    }
+
+    pub struct Test: ITest {
+      pub var greeting: String
+      pub var favouriteFruit: String
+
+      pub fun changeGreeting(newGreeting: String): String {
+        self.greeting = newGreeting
+        return self.greeting 
+      }
+
+      init() {
+        self.greeting = "Hello!"
+        self.favouriteFruit = "apple"
+      }
+    }
+
+    pub fun fixThis() {
+      let test: Test{ITest} = Test()
+      let newGreeting = test.changeGreeting(newGreeting: "Bonjour!") 
+      log(newGreeting)
+    }
+}
+
+```
