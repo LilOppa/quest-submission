@@ -329,3 +329,8 @@ pub contract Stuff {
 }
 
 ```
+
+## Chapter 3 Day 5
+
+```pub(set) var a: String```
+read scope - 
