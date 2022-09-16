@@ -335,5 +335,4 @@ pub contract Stuff {
 ```pub(set) var a: String```
 
 read scope: AREA 1-4
-
 write scope: AREA 1-4
