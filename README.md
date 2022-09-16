@@ -335,4 +335,41 @@ pub contract Stuff {
 ```pub(set) var a: String```
 
 read scope: AREA 1-4
+
 write scope: AREA 1-4
+
+
+```pub var b: String```
+
+read scope: AREA 1-4
+
+write scope: AREA 1
+
+
+```access(contract) var c: String```
+
+read scope: AREA 1, 2, 3
+
+write scope: AREA 1
+
+
+```access(self) var d: String```
+
+read scope: AREA 1
+
+write scope: AREA 1
+
+
+```pub fun publicFunc() {}```
+
+AREA 1-4
+
+
+```access(contract) fun contractFunc() {}```
+
+AREA 1, 2, 3
+
+
+```access(self) fun privateFunc() {}```
+
+AREA 1
