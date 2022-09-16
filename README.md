@@ -296,17 +296,19 @@ pub contract BasketballFantasy {
 
 3.
 
+```
+
 pub contract Stuff {
 
     pub struct interface ITest {
       pub var greeting: String
       pub var favouriteFruit: String
-      ***pub fun changeGreeting(newGreeting: String): String***
+      pub fun changeGreeting(newGreeting: String): String // fixed
     }
 
     pub struct Test: ITest {
       pub var greeting: String
-      pub var favouriteFruit: String
+      pub var favouriteFruit: String // fixed
 
       pub fun changeGreeting(newGreeting: String): String {
         self.greeting = newGreeting
@@ -315,7 +317,7 @@ pub contract Stuff {
 
       init() {
         self.greeting = "Hello!"
-        self.favouriteFruit = "apple"
+        self.favouriteFruit = "apple" // fixed
       }
     }
 
