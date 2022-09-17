@@ -373,3 +373,71 @@ AREA 1, 2, 3
 ```access(self) fun privateFunc() {}```
 
 AREA 1
+
+## Chapter 4 Day 1
+
+1. Almost all data is stored inside the account:
+- contract code (one or more)
+- account storage 
+
+2. 
+
+```/storage/``` - access only for account owner, all data is stored here
+```/public/``` - access for everybody
+```/private/``` - access for account owner and the people that the owner gives access to
+
+3.
+
+``` .save()``` - saves data in account storage
+``` .load()``` - takes data out of our account storage
+``` .borrow()``` - get a reference to the resource in our account storage
+
+4. We cannot save something to our account storage inside of a script because scripts use only to read state!
+
+6. 
+
+A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it:
+
+```
+
+import BasketballFantasy from 0x01
+transaction() {
+  prepare(signer: AuthAccount) {
+    let saveLineupResource <- BasketballFantasy.createLineup()
+    signer.save(<- saveLineupResource, to: /storage/MyLineupResource)
+
+    let loadLineupResource <- signer.load<@BasketballFantasy.Lineup>(from: /storage/MyLineupResource) 
+                                ?? panic("A `@BasketballFantasy.Lineup` resource does not live here.")
+    log(loadLineupResource.player) // "Kevin Durant"
+
+    destroy loadLineupResource
+  }
+
+  execute {
+
+  }
+}
+
+```
+
+A transaction that first saves the resource to account storage, then borrows a reference to it, and logs a field inside the resource:
+
+```
+
+import BasketballFantasy from 0x01
+transaction() {
+  prepare(signer: AuthAccount) {
+    let saveLineupResource <- BasketballFantasy.createLineup()
+    signer.save(<- saveLineupResource, to: /storage/MyLineupResource)
+
+    let borrowLineupResource = signer.borrow<&BasketballFantasy.Lineup>(from: /storage/MyLineupResource)
+                          ?? panic("A `@BasketballFantasy.Lineup` resource does not live here.")
+    log(borrowLineupResource.number) // 7
+  }
+
+  execute {
+
+  }
+}
+
+```
