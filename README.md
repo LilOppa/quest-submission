@@ -394,7 +394,7 @@ AREA 1
 
 4. We cannot save something to our account storage inside of a script because scripts use only to read state!
 
-6. 
+6. You cannot save something to my account cuz only I have access tp path /storage/
 
 A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it:
 
@@ -441,3 +441,88 @@ transaction() {
 }
 
 ```
+
+## Chapter 4 Day 2
+
+3.
+
+Contract
+
+```
+pub contract BasketballFantasy {
+
+  pub resource interface ILineup {
+    pub var number: UInt64
+  }
+
+  pub resource Lineup: ILineup {
+    pub let player: String
+    pub var number: UInt64
+
+    pub fun changeNumber(newNumber: UInt64) {
+      self.number = newNumber
+    }
+
+    init() {
+      self.player = "Kevin Durant"
+      self.number = 7
+    }
+  }
+
+    pub fun createLineup(): @Lineup {
+    return <- create Lineup()
+  }
+
+}
+```
+
+Transaction - save the resource to storage and link it to the public with the restrictive interface.
+
+```
+import BasketballFantasy from 0x05
+transaction() {
+  prepare(signer: AuthAccount) {
+    signer.save(<- BasketballFantasy.createLineup(), to: /storage/MyLineupResource)
+
+    signer.link<&BasketballFantasy.Lineup{BasketballFantasy.ILineup}>(/public/MyLineupResource, target: /storage/MyLineupResource)
+  }
+
+  execute {
+
+  }
+}
+```
+
+Run a script that tries to access a non-exposed field in the resource interface, and see the error pop up.
+
+```
+import BasketballFantasy from 0x05
+pub fun main(address: Address): String {
+  let publicCapability: Capability<&BasketballFantasy.Lineup{BasketballFantasy.ILineup}> =
+    getAccount(address).getCapability<&BasketballFantasy.Lineup{BasketballFantasy.ILineup}>(/public/MyLineupResource)
+
+  let lineupResource: &BasketballFantasy.Lineup{BasketballFantasy.ILineup} = publicCapability.borrow() 
+                          ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
+
+  // ERROR!!! member of restricted type is not accessible: player
+  return lineupResource.player
+}
+```
+
+Run the script and access something you CAN read from. Return it from the script.
+
+```
+import BasketballFantasy from 0x05
+pub fun main(address: Address): UInt64 {
+  let publicCapability: Capability<&BasketballFantasy.Lineup{BasketballFantasy.ILineup}> =
+    getAccount(address).getCapability<&BasketballFantasy.Lineup{BasketballFantasy.ILineup}>(/public/MyLineupResource)
+
+  let lineupResource: &BasketballFantasy.Lineup{BasketballFantasy.ILineup} = publicCapability.borrow() 
+                          ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
+
+    return lineupResource.number
+}
+```
+
+
+
