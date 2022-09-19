@@ -444,6 +444,10 @@ transaction() {
 
 ## Chapter 4 Day 2
 
+1. The ```.link() function links our resource to the ```/public/``` path so other can access it to read
+
+2. When we define a new resource interface, we expose only the fields or methods we need. So we restrict the reference to use that resource when we create .link() the resource to the /public/ path
+
 3.
 
 Contract
