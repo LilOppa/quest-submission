@@ -528,5 +528,13 @@ pub fun main(address: Address): UInt64 {
 }
 ```
 
+## Chapter 4 Day 3
 
+1.
+- If we wanted to have a lot of NFTs, we would have to remember all the storage paths we gave it - its inefficient
+- Nobody can mint us NFT
+
+2. When you have resources inside of resources, you must declare a ```destroy``` function that manually destroys those "nested" resources with the ```destroy``` keyword
+
+3. 
 
