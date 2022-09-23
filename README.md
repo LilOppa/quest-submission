@@ -540,8 +540,7 @@ pub fun main(address: Address): UInt64 {
 
 ## Chapter 4 Day 4
 
-```
-
+```javascript
 pub contract CryptoPoops {
   pub var totalSupply: UInt64
 
@@ -633,5 +632,4 @@ pub contract CryptoPoops {
     self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
-
 ```
