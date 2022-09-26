@@ -538,7 +538,7 @@ pub fun main(address: Address): UInt64 {
 
 3. 
 Idea #1: Do we really want everyone to be able to mint an NFT?
-- We need to have a way to decide who can mint cuz the collection is limited. To do this, you need to implement the mint through a resource that will carry the rights of the mint. And only those who have this resource will be able to mint.
+- No, I dont want! We need to have a way to decide who can mint. To do this, you need to implement the mint through a resource that will carry the rights of the mint. And only those who have this resource will be able to mint.
 
 Idea #2: If we want to read information about our NFTs inside our Collection, right now we have to take it out of the Collection to do so. Is this good?
 - We need to add a new function to our Collection to return references to our NFTs - it is faster and easier
