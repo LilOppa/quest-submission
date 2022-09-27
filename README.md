@@ -662,3 +662,30 @@ pub contract BasketballFantasy {
   }
 }
 ```
+
+3. 
+pub contract BasketballFantasy {
+
+  pub event PlayerAdded(name: String)
+
+  pub resource Players {
+    pub let name: String
+    pub let number: UInt64
+    init(_name: String, _number: UInt64) {
+      self.name = _name
+      self.number = _number
+
+      emit PlayerAdded(name: self.name)
+    }
+  }
+
+  pub fun Lineup(number: UInt64) {
+    pre {
+      number > 99: "This number is incorrect"
+    }
+    let lineup: @Players <- create Players(_name: "Kevin Durant", _number: 7)
+    log(lineup.number)
+
+    destroy lineup
+  }
+}
