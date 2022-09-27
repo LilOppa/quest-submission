@@ -638,3 +638,27 @@ pub contract CryptoPoops {
   }
 }
 ```
+
+## Chapter 5 Day 1
+
+1. Event is a way to notify that something happened in the smart contract. It is more easier and effective way than check the our smart every time after a transaction.
+
+2. 
+
+```javascript
+pub contract BasketballFantasy {
+
+  pub event PlayerAdded(name: String)
+
+  pub resource Lineup {
+    pub let name: String
+    pub let team: String
+    init(_name: String, _team: String) {
+      self.name = _name
+      self.team = _team
+
+      emit PlayerAdded(name: self.name)
+    }
+  }
+}
+```
