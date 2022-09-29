@@ -698,3 +698,7 @@ pub contract BasketballFantasy {
   }
 }
 ```
+4.
+- NumberOne: yes
+- NumberTwo: yes
+- NumberThree: no; value of `self.number` after it's run 0
