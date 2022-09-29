@@ -652,10 +652,11 @@ pub contract BasketballFantasy {
 
   pub resource Lineup {
     pub let name: String
-    pub let team: String
-    init(_name: String, _team: String) {
-      self.name = _name
-      self.team = _team
+    pub var number: UInt64
+    
+    init(_number: UInt64) {
+      self.name = "Kevin Durant"
+      self.number = _number
 
       emit PlayerAdded(name: self.name)
     }
@@ -664,28 +665,36 @@ pub contract BasketballFantasy {
 ```
 
 3. 
+
+```javascript
 pub contract BasketballFantasy {
 
   pub event PlayerAdded(name: String)
 
-  pub resource Players {
+  pub resource Lineup {
     pub let name: String
-    pub let number: UInt64
-    init(_name: String, _number: UInt64) {
-      self.name = _name
+    pub var number: UInt64
+
+    pub fun changeNumber(newNumber: UInt64) {
+      post {
+        newNumber == 7: "The number doesnt owned to him"
+      }
+      self.number = newNumber
+    }
+
+    init(_number: UInt64) {
+      self.name = "Kevin Durant"
       self.number = _number
 
       emit PlayerAdded(name: self.name)
     }
   }
-
-  pub fun Lineup(number: UInt64) {
+  
+  pub fun createLineup(_number: UInt64): @Lineup {
     pre {
-      number > 99: "This number is incorrect"
+      _number < 99: "The number is invalid"
     }
-    let lineup: @Players <- create Players(_name: "Kevin Durant", _number: 7)
-    log(lineup.number)
-
-    destroy lineup
+    return <- create Lineup( _number: 7)
   }
 }
+```
