@@ -702,3 +702,60 @@ pub contract BasketballFantasy {
 - NumberOne: yes
 - NumberTwo: yes
 - NumberThree: no; value of `self.number` after it's run 0
+
+## Chapter 5 Day 2
+
+1. The benefits standardiizing are that they define the general rules for what contracts must have.
+This make it easier for DApps to access them and thier function.
+
+2. My favourite food is grilled BBQ chicken. Its so good)
+
+3. 
+
+The contract interface(no changes here):
+```javascript
+pub contract interface ITest {
+  pub var number: Int
+  
+  pub fun updateNumber(newNumber: Int) {
+    pre {
+      newNumber >= 0: "We don't like negative numbers for some reason. We're mean."
+    }
+    post {
+      self.number == newNumber: "Didn't update the number to be the new number."
+    }
+  }
+
+  pub resource interface IStuff {
+    pub var favouriteActivity: String
+  }
+
+  pub resource Stuff {
+    pub var favouriteActivity: String
+  }
+}
+```
+
+The implementing contract:
+```javascript
+import ITest from 0x01
+pub contract Test: ITest {
+  pub var number: Int
+  
+  pub fun updateNumber(newNumber: Int) {
+    self.number = 5
+  }
+
+  pub resource Stuff: ITest.IStuff {
+    pub var favouriteActivity: String
+
+    init() {
+      self.favouriteActivity = "Playing League of Legends in Iron 4."
+    }
+  }
+
+  init() {
+    self.number = 0
+  }
+}
+```
