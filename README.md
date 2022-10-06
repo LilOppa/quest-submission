@@ -864,6 +864,7 @@ pub contract CryptoPoops: NonFungibleToken {
 }
 ```
 
+
 Save Collection
 ```javascript
 import CryptoPoops from 0x01
@@ -877,8 +878,9 @@ transaction() {
 }
 ```
 
+
 Mint
-```
+```javascript
 import CryptoPoops from 0x01
 
 transaction(recipient: Address, name: String, favouriteFood: String, luckyNumber: Int) {
@@ -907,6 +909,7 @@ transaction(recipient: Address, name: String, favouriteFood: String, luckyNumber
   }
 }
 ```
+
 
 Script
 ```javascript
