@@ -759,3 +759,167 @@ pub contract Test: ITest {
   }
 }
 ```
+
+## Chapter 5 Day 3
+
+1. "Force casting" with as! does converts our type ```@NonFungibleToken.NFT)``` to be specific type ```@NFT```. So that can be only deposit our NFT in the our Collection.
+
+2. ```auth``` uses for convert our references to be specific type. We use ```auth``` when we need to read our NFTs metadata
+
+3. 
+
+Contract
+```javascript
+import NonFungibleToken from 0x02
+pub contract CryptoPoops: NonFungibleToken {
+  pub var totalSupply: UInt64
+
+  pub event ContractInitialized()
+  pub event Withdraw(id: UInt64, from: Address?)
+  pub event Deposit(id: UInt64, to: Address?)
+
+  pub resource NFT: NonFungibleToken.INFT {
+    pub let id: UInt64
+
+    pub let name: String
+    pub let favouriteFood: String
+    pub let luckyNumber: Int
+    
+
+    init(_name: String, _favouriteFood: String, _luckyNumber: Int) {
+      self.id = self.uuid
+
+      self.name = _name
+      self.favouriteFood = _favouriteFood
+      self.luckyNumber = _luckyNumber
+    }
+  }
+
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NonFungibleToken.NFT)
+    pub fun getIDs(): [UInt64]
+    pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
+    pub fun borrowAuthNFT(id: UInt64): &NFT
+  }
+
+  pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, CollectionPublic {
+    pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
+
+    pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
+            ?? panic("This NFT does not exist in this Collection.")
+      emit Withdraw(id: nft.id, from: self.owner?.address)
+      return <- nft
+    }
+
+    pub fun deposit(token: @NonFungibleToken.NFT) {
+      let nft <- token as! @NFT
+      emit Deposit(id: nft.id, to: self.owner?.address)
+      self.ownedNFTs[nft.id] <-! nft
+    }
+
+    pub fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
+    }
+
+    pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
+      return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
+    }
+
+    pub fun borrowAuthNFT(id: UInt64): &NFT {
+      let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
+      return ref as! &NFT
+    }
+
+    init() {
+      self.ownedNFTs <- {}
+    }
+
+    destroy() {
+      destroy self.ownedNFTs
+    }
+  }
+
+  pub fun createEmptyCollection(): @NonFungibleToken.Collection {
+    return <- create Collection()
+  }
+
+  pub resource Minter {
+
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    }
+
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
+    }
+
+  }
+
+  init() {
+    self.totalSupply = 0
+    emit ContractInitialized()
+    self.account.save(<- create Minter(), to: /storage/Minter)
+  }
+}
+```
+
+Save Collection
+```javascript
+import CryptoPoops from 0x01
+
+transaction() {
+  prepare(signer: AuthAccount) {
+    signer.save(<- CryptoPoops.createEmptyCollection(), to: /storage/MyCollection)
+    
+    signer.link<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>(/public/MyCollection, target: /storage/MyCollection)
+  }
+}
+```
+
+Mint
+```
+import CryptoPoops from 0x01
+
+transaction(recipient: Address, name: String, favouriteFood: String, luckyNumber: Int) {
+
+  // Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource
+  prepare(signer: AuthAccount) {
+    // Get a reference to the `Minter`
+    let minter = signer.borrow<&CryptoPoops.Minter>(from: /storage/Minter)
+                    ?? panic("This signer is not the one who deployed the contract.")
+
+    // Get a reference to the `recipient`s public Collection
+    let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
+                                  ?? panic("The recipient does not have a Collection.")
+
+    // mint the NFT using the reference to the `Minter`
+    let nft <- minter.createNFT(name: name, favouriteFood: favouriteFood, luckyNumber: luckyNumber)
+
+    // deposit the NFT in the recipient's Collection
+    recipientsCollection.deposit(token: <- nft)
+    //log(recipientsCollection.getIDs())
+  }
+
+  execute {
+    
+  }
+}
+```
+
+Script
+```javascript
+import CryptoPoops from 0x01
+
+pub fun main(address: Address, id: UInt64) {
+  let publicCollection = getAccount(address).getCapability(/public/MyCollection)
+              .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
+              ?? panic("The address does not have a Collection.")
+  
+  let nftRef: &CryptoPoops.NFT = publicCollection.borrowAuthNFT(id: id) // ERROR: "Member of restricted type is not accessible: borrowAuthNFT"
+  log(nftRef.name)
+  log(nftRef.favouriteFood)
+  log(nftRef.luckyNumber)
+}
+```
