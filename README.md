@@ -926,3 +926,10 @@ pub fun main(address: Address, id: UInt64) {
   log(nftRef.luckyNumber)
 }
 ```
+
+## Chapter 6 Day 1 (extra credit)
+
+1. https://flow-view-source.com/testnet/account/0xc2c24019fd93db41
+
+## Chapter 6 Day 2
+
