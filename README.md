@@ -935,3 +935,16 @@ pub fun main(address: Address, id: UInt64) {
 
 1. Figure out how to mint an NFT to yourself by sending a transaction using the Flow CLI, like we did today when we set up our collection. You will also likely have to pass an argument as well.
 ![image](https://user-images.githubusercontent.com/72570095/195271894-c70ec2cd-ba0e-4ee1-be5f-1e06d82e6599.png)
+
+2. Run a script to read the new totalSupply using the Flow CLI
+![image](https://user-images.githubusercontent.com/72570095/195272738-403b72ed-1077-4493-a971-a3f53869ed03.png)
+
+3. Run a script to read the ids of NFTs in someone's collection using the Flow CLI
+![image](https://user-images.githubusercontent.com/72570095/195278355-701bd2f8-50be-48ee-a9bd-24a75ac0bd9c.png)
+
+4. Run a script to read a specific NFT's metadata from someone's collection using the Flow CLI
+![image](https://user-images.githubusercontent.com/72570095/195279498-c53f8571-fc6a-4ea8-ab1f-2241009261ed.png)
+
+5. Run a script to read the GoatedGoats totalSupply on Flow Mainnet. Their contract lives here: https://flow-view-source.com/mainnet/account/0x2068315349bdfce5/contract/GoatedGoats
+![image](https://user-images.githubusercontent.com/72570095/195320280-6a5b4f87-f8ad-436c-9916-011811847885.png)
+
