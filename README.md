@@ -933,3 +933,5 @@ pub fun main(address: Address, id: UInt64) {
 
 ## Chapter 6 Day 2
 
+1. Figure out how to mint an NFT to yourself by sending a transaction using the Flow CLI, like we did today when we set up our collection. You will also likely have to pass an argument as well.
+![image](https://user-images.githubusercontent.com/72570095/195271894-c70ec2cd-ba0e-4ee1-be5f-1e06d82e6599.png)
