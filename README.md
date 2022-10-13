@@ -948,3 +948,7 @@ pub fun main(address: Address, id: UInt64) {
 5. Run a script to read the GoatedGoats totalSupply on Flow Mainnet. Their contract lives here: https://flow-view-source.com/mainnet/account/0x2068315349bdfce5/contract/GoatedGoats
 ![image](https://user-images.githubusercontent.com/72570095/195320280-6a5b4f87-f8ad-436c-9916-011811847885.png)
 
+6. Figure out how to read someone's GoatedGoats NFTs from their collection and run a script using the Flow CLI to do it.
+![image](https://user-images.githubusercontent.com/72570095/195525360-126b67c8-ff5e-4b8a-beb0-ac79a810c542.png)
+
+![image](https://user-images.githubusercontent.com/72570095/195525697-05d8b312-5c37-448a-885a-3d6c96e7a56c.png)
