@@ -11,3 +11,9 @@ When you drive a car you use the steering wheel to move it. But what really driv
 ![Screenshot_1](https://user-images.githubusercontent.com/72570095/195547729-c8f74cd6-6910-49d6-bab0-68c26645c49e.png)
 
 4. https://github.com/LilOppa/beginner-emerald-dapp
+
+## Chapter 2 Day 2
+
+![image](https://user-images.githubusercontent.com/72570095/195830616-beb8d3c8-16ae-4efe-87a0-7eeb51880146.png)
+![image](https://user-images.githubusercontent.com/72570095/195830668-389fd951-6952-4fab-84c3-bd6e19ce8e32.png)
+![image](https://user-images.githubusercontent.com/72570095/195830738-69cf0e4e-adb9-4530-85c5-3740c7fcc22b.png)
