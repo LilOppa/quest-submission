@@ -14,6 +14,6 @@ When you drive a car you use the steering wheel to move it. But what really driv
 
 ## Chapter 2 Day 2
 
-![image](https://user-images.githubusercontent.com/72570095/195830616-beb8d3c8-16ae-4efe-87a0-7eeb51880146.png)
+![image](https://user-images.githubusercontent.com/72570095/195830872-79215921-e44c-4077-a4c4-028978f01eca.png)
 ![image](https://user-images.githubusercontent.com/72570095/195830668-389fd951-6952-4fab-84c3-bd6e19ce8e32.png)
 ![image](https://user-images.githubusercontent.com/72570095/195830738-69cf0e4e-adb9-4530-85c5-3740c7fcc22b.png)
