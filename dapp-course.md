@@ -21,3 +21,53 @@ When you drive a car you use the steering wheel to move it. But what really driv
 ## Chapter 2 Day 3
 
 ![image](https://user-images.githubusercontent.com/72570095/195976179-dec485d7-5ff8-4c2b-b341-e51a38437c41.png)
+
+## Chapter 2 Day 4
+
+```javascript
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
+import Nav from '../components/nav'
+import { useState } from 'react'
+
+export default function Home() {
+  const [newGreeting, setNewGreeting] = useState('')
+
+  function runTransaction() {
+    console.log(newGreeting)
+  }
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Emerald DApp</title>
+        <meta name="description" content="Created by Emerald Academy" />
+        <link rel="icon" href="https://i.imgur.com/hvNtbgD.png" />
+      </Head>
+
+      <Nav />
+
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          Welcome to my{' '}
+          <a href="https://github.com/LilOppa" target="_blank">
+            Github!
+          </a>
+        </h1>
+        <p>Hi there!</p>
+
+        <div className={styles.flex}>
+          <button onClick={runTransaction}>Run Transaction</button>
+
+          <input
+            onChange={(e) => setNewGreeting(e.target.value)}
+            placeholder="Hello, Idiots!"
+          />
+        </div>
+      </main>
+    </div>
+  )
+}
+```
+
+![image](https://user-images.githubusercontent.com/72570095/195980327-6a40e425-fae5-4394-b1c4-ca1fbb5ff183.png)
