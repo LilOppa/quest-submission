@@ -74,7 +74,7 @@ export default function Home() {
 
 ## Chapter 4 Day 1
 
-1. We checked if the user is logged in and if not, we called the log in function. For calling this function we imported ```fcl```
+1. We checked if the user is logged in and if not, we called the log in function. For calling this function we imported ```fcl```.
 Also we added an ```onClick``` handler to our ```<button>``` for to call our function when we click.
 ![image](https://user-images.githubusercontent.com/72570095/196143742-7c1fe0d0-3eb1-40ab-9060-a0fadd597429.png)
 
@@ -89,4 +89,4 @@ It connects our dapp to flow testnet and allows our dapp to connect to Blocto an
 
 5. ```import * as fcl from "@onflow/fcl"```
 
-6. ```fcl.currentUser.subscribe(setUser);`` is making sure the user variable retains its value even if the page is refreshed.
+6. ```fcl.currentUser.subscribe(setUser);``` is making sure the user variable retains its value even if the page is refreshed.
