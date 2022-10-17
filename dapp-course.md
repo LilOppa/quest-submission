@@ -71,3 +71,22 @@ export default function Home() {
 ```
 
 ![image](https://user-images.githubusercontent.com/72570095/195980327-6a40e425-fae5-4394-b1c4-ca1fbb5ff183.png)
+
+## Chapter 4 Day 1
+
+1. We checked if the user is logged in and if not, we called the log in function. For calling this function we imported ```fcl```
+Also we added an ```onClick``` handler to our ```<button>``` for to call our function when we click.
+![image](https://user-images.githubusercontent.com/72570095/196143742-7c1fe0d0-3eb1-40ab-9060-a0fadd597429.png)
+
+
+2. ```fcl.authenticate()``` is a fcl property to log in the user.
+```fcl.unauthenticate()``` to log out.
+
+3. We are created a ```config.js``` cuz we need a configuration for connecting our dapp to network(testnet or mainnet) and wallets. 
+It connects our dapp to flow testnet and allows our dapp to connect to Blocto and Lilico wallet.
+
+4. ```useEffect``` is a function that runs after every rendering. In our case its to check a value ```user``` variable after every page refreshing.
+
+5. ```import * as fcl from "@onflow/fcl"```
+
+6. ```fcl.currentUser.subscribe(setUser);`` is making sure the user variable retains its value even if the page is refreshed.
