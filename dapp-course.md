@@ -90,3 +90,8 @@ It connects our dapp to flow testnet and allows our dapp to connect to Blocto an
 5. ```import * as fcl from "@onflow/fcl"```
 
 6. ```fcl.currentUser.subscribe(setUser);``` is making sure the user variable retains its value even if the page is refreshed.
+
+## Chapter 4 Day 2
+
+1. ![image](https://user-images.githubusercontent.com/72570095/196160913-ebb6bc78-de31-4cc8-885f-d3d4d63966f0.png)
+
