@@ -282,3 +282,9 @@ export default function Home() {
 }
 ```
 ![image](https://user-images.githubusercontent.com/72570095/196356785-97edafae-5566-4c25-b9a3-d34851548875.png)
+
+## Chapter 4 Day 3
+
+1. 
+![image](https://user-images.githubusercontent.com/72570095/196365042-b62a239d-0e81-44ba-98c0-1fb355862dea.png)
+
