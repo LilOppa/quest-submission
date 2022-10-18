@@ -188,3 +188,97 @@ export default function Home() {
   )
 }
 ```
+![image](https://user-images.githubusercontent.com/72570095/196356291-53850cae-4682-4fb8-8d80-99c113fdcc78.png)
+
+2b. 
+```javascript
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
+import Nav from '../components/nav'
+import { useState, useEffect } from 'react'
+import * as fcl from '@onflow/fcl'
+
+export default function Home() {
+  const [newGreeting, setNewGreeting] = useState('')
+  const [greeting, setGreeting] = useState('')
+  const [newNumber, setNewNumber] = useState('')
+
+  function runTransaction() {
+    console.log(newGreeting)
+  }
+
+  async function executeScript() {
+    const response = await fcl.query({
+      cadence: `
+      import HelloWorld from 0xc0cc376c9b7faec3
+
+      pub fun main(): String {
+          return HelloWorld.greeting
+      }
+      `, // CADENCE CODE GOES IN THESE ``
+      args: (arg, t) => [], // ARGUMENTS GO IN HERE
+    })
+
+    console.log('Response from our script: ' + response)
+    setGreeting(response)
+  }
+
+  async function executeScriptNum() {
+    const response = await fcl.query({
+      cadence: `
+      import SimpleTest from 0x6c0d53c676256e8c
+
+      pub fun main(): Int {
+          return SimpleTest.number
+      }
+      `, // CADENCE CODE GOES IN THESE ``
+      args: (arg, t) => [], // ARGUMENTS GO IN HERE
+    })
+
+    setNewNumber(response)
+  }
+
+  useEffect(() => {
+    executeScript()
+    executeScriptNum()
+  }, [])
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Emerald DApp</title>
+        <meta name="description" content="Created by Emerald Academy" />
+        <link rel="icon" href="https://i.imgur.com/hvNtbgD.png" />
+      </Head>
+
+      <Nav />
+
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          Welcome to my{' '}
+          <a href="https://github.com/LilOppa" target="_blank">
+            Github!
+          </a>
+        </h1>
+        <p>Hi there!</p>
+
+        <div className={styles.flex}>
+          <button onClick={runTransaction}>Run Transaction</button>
+
+          <input
+            onChange={(e) => setNewGreeting(e.target.value)}
+            placeholder="Hello, Idiots!"
+          />
+        </div>
+
+        <p>{greeting}</p>
+
+        <div>
+          <output>{newNumber}</output>
+        </div>
+      </main>
+    </div>
+  )
+}
+```
+![image](https://user-images.githubusercontent.com/72570095/196356785-97edafae-5566-4c25-b9a3-d34851548875.png)
