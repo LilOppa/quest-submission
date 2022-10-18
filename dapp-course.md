@@ -94,7 +94,7 @@ It connects our dapp to flow testnet and allows our dapp to connect to Blocto an
 ## Chapter 4 Day 2
 
 1. 
-2. ![image](https://user-images.githubusercontent.com/72570095/196160913-ebb6bc78-de31-4cc8-885f-d3d4d63966f0.png)
+![image](https://user-images.githubusercontent.com/72570095/196160913-ebb6bc78-de31-4cc8-885f-d3d4d63966f0.png)
 
 2a. 
 
