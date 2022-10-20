@@ -456,13 +456,19 @@ export default function Home() {
 
 1. 
 ```res.status === 0``` - Unknown
+
 ```res.status === 1``` - Transaction pending - awaiting finalization
+
 ```res.status === 2``` - Transaction finalized - awaiting execution
+
 ```res.status === 3``` - Transaction executed - awaiting sealing
+
 ```res.status === 4``` - Transaction sealed - transaction complete
+
 ```res.status === 5``` - Transaction expired
 
 2. ```setTimeout()``` sets a timer which executes a function once the timer expires.
+3. 
 ```setTimeout(() => setTxStatus('Run Transaction'), 5000)```
 
 3. ```fcl.tx(transactionId).subscribe(res => {...}``` function gives us the new status of the transaction every time it changes inside the ```res``` object
