@@ -471,3 +471,6 @@ export default function Home() {
 ```setTimeout(() => setTxStatus('Run Transaction'), 5000)```
 
 3. ```fcl.tx(transactionId).subscribe(res => {...}``` function gives us the new status of the transaction every time it changes inside the ```res``` object
+
+4. ![image](https://user-images.githubusercontent.com/72570095/196890724-6215dc89-bd4a-4b2c-bb36-bcc3ebdcbb70.png)
+
